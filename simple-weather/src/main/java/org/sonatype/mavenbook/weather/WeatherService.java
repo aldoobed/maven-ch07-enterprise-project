@@ -2,22 +2,24 @@ package org.sonatype.mavenbook.weather;
 
 import java.io.InputStream;
 
+import org.sonatype.mavenbook.weather.model.Weather;
+
 public class WeatherService {
-	
+
 	private YahooRetriever yahooRetriever;
 	private YahooParser yahooParser;
 
 	public WeatherService() {
 	}
 
-	public Weather retrieveForecast(String woid) throws Exception {
+	public Weather retrieveForecast(String woeid) throws Exception {
 		// Retrieve Data
-		InputStream dataIn = yahooRetriever.retrieve(woid);
-		// Parse Data
-		Weather weather = yahooParser.parse(dataIn);
-		
-		return weather;
+		InputStream dataIn = yahooRetriever.retrieve(woeid);
 
+		// Parse DataS
+		Weather weather = yahooParser.parse(woeid, dataIn);
+
+		return weather;
 	}
 
 	public YahooRetriever getYahooRetriever() {
@@ -35,4 +37,5 @@ public class WeatherService {
 	public void setYahooParser(YahooParser yahooParser) {
 		this.yahooParser = yahooParser;
 	}
+
 }

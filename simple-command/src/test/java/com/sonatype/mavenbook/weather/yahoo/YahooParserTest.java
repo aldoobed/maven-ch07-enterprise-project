@@ -1,10 +1,11 @@
-package org.sonatype.mavenbook.weather;
+package com.sonatype.mavenbook.weather.yahoo;
 
 import java.io.InputStream;
 
-import org.sonatype.mavenbook.weather.model.Weather;
-
 import junit.framework.TestCase;
+
+import org.sonatype.mavenbook.weather.model.Weather;
+import org.sonatype.mavenbook.weather.YahooParser;
 
 public class YahooParserTest extends TestCase {
 
