@@ -18,8 +18,8 @@ public class WeatherController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		String zip = request.getParameter("zip");
-		Weather weather = weatherService.retrieveForecast(zip);
+		String woeid = request.getParameter("woeid");
+		Weather weather = weatherService.retrieveForecast(woeid);
 		weatherDAO.save(weather);
 		return new ModelAndView("weather", "weather", weather);
 	}

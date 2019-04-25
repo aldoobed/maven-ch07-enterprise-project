@@ -14,11 +14,11 @@ public class LocationDAO extends HibernateDaoSupport {
 
     public LocationDAO() {}
 
-    public Location findByZip(final String zip) {
+    public Location findByWoeid(final String woeid) {
     	return (Location) getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) {
-				Query query = getSession().getNamedQuery("Location.uniqueByZip");
-				query.setString("zip", zip);
+				Query query = getSession().getNamedQuery("Location.uniqueByWoeid");
+				query.setString("woeid", woeid);
 				return (Location) query.uniqueResult();
 			}
 		});

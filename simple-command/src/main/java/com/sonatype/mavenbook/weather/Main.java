@@ -53,20 +53,20 @@ public class Main {
 		}
 	}
 
-	private String zip;
+	private String woeid;
 
-	public Main(String zip) {
-		this.zip = zip;
+	public Main(String woeid) {
+		this.woeid = woeid;
 	}
 
 	public void getWeather() throws Exception {
-		Weather weather = weatherService.retrieveForecast(zip);
+		Weather weather = weatherService.retrieveForecast(woeid);
 		weatherDAO.save( weather );
 		System.out.print(new WeatherFormatter().formatWeather(weather));
 	}
 
 	public void getHistory() throws Exception {
-		Location location = locationDAO.findByZip(zip);
+		Location location = locationDAO.findByWoeid(woeid);
 		List<Weather> weathers = weatherDAO.recentForLocation(location);
 		System.out.print(new WeatherFormatter().formatHistory(location, weathers));
 	}

@@ -21,8 +21,8 @@ public class HistoryController implements Controller {
 
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		String zip = request.getParameter("zip");
-		Location location = locationDAO.findByZip(zip);
+		String woeid = request.getParameter("woeid");
+		Location location = locationDAO.findByWoeid(woeid);
 		List<Weather> weathers = weatherDAO.recentForLocation( location );
 		
 		Map<String,Object> model = new HashMap<String,Object>();

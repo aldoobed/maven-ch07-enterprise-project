@@ -4,20 +4,37 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-	<servlet>
-		<servlet-name>simple</servlet-name>
-		<servlet-class>org.sonatype.mavenbook.web.SimpleServlet</servlet-class>
-	</servlet>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:applicationContext-weather.xml
+			classpath:applicationContext-persist.xml
+		</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.properties</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 	<servlet>
 		<servlet-name>weather</servlet-name>
-		<servlet-class>org.sonatype.mavenbook.web.WeatherServlet</servlet-class>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>simple</servlet-name>
-		<url-pattern>/simple</url-pattern>
-	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>weather</servlet-name>
-		<url-pattern>/weather</url-pattern>
+		<url-pattern>*.x</url-pattern>
 	</servlet-mapping>
 </web-app>
