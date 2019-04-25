@@ -7,7 +7,7 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Location.uniqueByZip", query="from Location l where l.zip = :zip")
+	@NamedQuery(name="Location.uniqueByWoeid", query="from Location l where l.woeid = :woeid")
 })
 public class Location {
     
