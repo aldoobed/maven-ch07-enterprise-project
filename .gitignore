@@ -29,3 +29,11 @@ hs_err_pid*
 simple-command/target/classes/META-INF/maven/org\.sonatype\.mavenbook\.ch07/simple-command/pom\.properties
 
 *.component
+
+*.prefs
+
+simple-model/\.settings/
+
+simple-persist/\.settings/
+
+simple-weather/\.settings/
