@@ -22,4 +22,10 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-\.project
+*.project
+
+*.classpath
+
+simple-command/target/classes/META-INF/maven/org\.sonatype\.mavenbook\.ch07/simple-command/pom\.properties
+
+*.component
