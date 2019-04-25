@@ -41,3 +41,5 @@ simple-weather/\.settings/
 simple-command/target/classes/META-INF/MANIFEST\.MF
 
 simple-command/target/classes/META-INF/maven/org\.sonatype\.mavenbook\.ch07/simple-command/pom\.xml
+
+simple-webapp/data/
