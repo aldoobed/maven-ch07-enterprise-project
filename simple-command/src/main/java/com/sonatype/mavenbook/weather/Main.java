@@ -18,14 +18,14 @@ public class Main {
 	private LocationDAO locationDAO;
 	
 	public static void main(String[] args) throws Exception {
+		
 		// Configure Log4J
-		PropertyConfigurator.configure(Main.class.getClassLoader().getResource(
-				"log4j.properties"));
-
-		// Read the Zip Code from the Command-line (if none supplied, use 60202)
-		String zipcode = "60202";
+		PropertyConfigurator.configure(Main.class.getClassLoader().getResource("log4j.properties"));
+		
+		// Read the Woeid Code from the Command-line (if none supplied, use 60202)
+		String woeid = "116545";
 		try {
-			zipcode = args[0];
+			woeid = args[0];
 		} catch (Exception e) {
 		}
 
@@ -37,12 +37,11 @@ public class Main {
 		}
 
 		// Start the program
-		Main main = new Main(zipcode);
+		Main main = new Main(woeid);
 
-		ApplicationContext context = 
-			new ClassPathXmlApplicationContext(
-					new String[] { "classpath:applicationContext-weather.xml",
-								   "classpath:applicationContext-persist.xml" });
+		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] { 
+				"classpath:applicationContext-weather.xml",
+				"classpath:applicationContext-persist.xml" });
 		main.weatherService = (WeatherService) context.getBean("weatherService");
 		main.locationDAO = (LocationDAO) context.getBean("locationDAO");
 		main.weatherDAO = (WeatherDAO) context.getBean("weatherDAO");
@@ -62,12 +61,12 @@ public class Main {
 	public void getWeather() throws Exception {
 		Weather weather = weatherService.retrieveForecast(woeid);
 		weatherDAO.save( weather );
-		System.out.print(new WeatherFormatter().formatWeather(weather));
+		System.out.println(new WeatherFormatter().formatWeather(weather));
 	}
 
 	public void getHistory() throws Exception {
 		Location location = locationDAO.findByWoeid(woeid);
 		List<Weather> weathers = weatherDAO.recentForLocation(location);
-		System.out.print(new WeatherFormatter().formatHistory(location, weathers));
+		System.out.println(new WeatherFormatter().formatHistory(location, weathers));
 	}
 }
